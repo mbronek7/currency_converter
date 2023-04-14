@@ -4,7 +4,10 @@ This repo contains Ruby program which converts a given amount from one currency 
 external API - https://www.exchangerate-api.com/
 
 Given from_currency, amount and to_currency we expect to receive the converted_amount.
+## How to install
+You need to have Ruby 3.1.2 installed to run this program on your machine, after this download this repoi and run:
 
+ `bundle install`
 ## How to use
 Program expects the following command-line options:
 
