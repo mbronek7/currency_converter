@@ -1,12 +1,13 @@
 #!/usr/bin/env ruby
 
 require "optparse"
+require "./lib/exchange_simulator/simulator"
 
 options = {}
 
 OptionParser.new do |parser|
   parser.on("-f", "--from_currency FROM_CURRENCY", "Base currency") do |from_currency|
-    options[:from_currency] = from_currency
+    options[:from_currency] = from_currency.upcase
   end
 
   parser.on("-a", "--amount AMOUNT", "Amount") do |amount|
@@ -14,7 +15,7 @@ OptionParser.new do |parser|
   end
 
   parser.on("-t", "--to_currency TO_CURRENCY", "Currency to exchange") do |to_currency|
-    options[:to_currency] = to_currency
+    options[:to_currency] = to_currency.upcase
   end
 
   parser.on("-h", "--help", "Prints this help message") do
@@ -23,6 +24,17 @@ OptionParser.new do |parser|
   end
 end.parse!(into: options)
 
+if options.size != 3
+  p "you need to specify 3 arguments to run currency converter, see -h option for more"
+  exit
+end
+
+begin
+  !!Float(options[:amount])
+rescue
+  p "amount must be float or integer"
+  exit
+end
 
 exchange_simulation = ExchangeSimulator::Simulator.simulate(options[:from_currency], options[:amount], options[:to_currency])
 

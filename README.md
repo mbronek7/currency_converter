@@ -12,10 +12,13 @@ Program expects the following command-line options:
 - `-a`, --amount AMOUNT (required): the amount to be exchanged.
 - `-t`, --to_currency TO_CURRENCY (required): the currency to which to convert.
 
-All currencies must be in [ISO 4217 Three Letter Currency Codes format](https://www.exchangerate-api.com/docs/supported-currencies).
+All currencies must follow [ISO 4217 Three Letter Currency Codes format](https://www.exchangerate-api.com/docs/supported-currencies)(not case sensitive).
 
 ## Example Usage
 ```
 ➜ ✗ ./bin/converter -f USD -a 100 -t PLN
 420.43
 ```
+
+#### Note
+spec examples are co-authored with ChatGPT
