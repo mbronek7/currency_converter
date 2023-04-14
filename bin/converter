@@ -23,4 +23,11 @@ OptionParser.new do |parser|
   end
 end.parse!(into: options)
 
-puts options.inspect
+
+exchange_simulation = ExchangeSimulator::Simulator.simulate(options[:from_currency], options[:amount], options[:to_currency])
+
+if exchange_simulation.success?
+  p exchange_simulation.result
+else
+  p "failed due to: #{exchange_simulation.error}"
+end
